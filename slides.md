@@ -1,4 +1,4 @@
-title: YYCjs Slides
+title: Building InstaFace
 output: index.html
 theme: theme
 controls: false
@@ -6,21 +6,9 @@ logo: theme/logo.png
 
 --
 
-# YYC.js Presents:
+# InstaFace
 
-## An Epic Slide Template
-
-### That totally kicks some ass
-
-#### Kind of like Chuck Norris
-
-##### And Jackie Chan
-
-Maybe even Chris Rock
-
---
-
-# Brought to you by
+## Building a real-time photo sharing application
 
 -- presenter
 
@@ -30,39 +18,120 @@ Maybe even Chris Rock
 
 * [<i class="fa fa-github"></i> daffl](https://github.com/daffl)
 * [<i class="fa fa-twitter"></i> @daffl](http://twitter.com/daffl)
-
--- presenter
-
-![Eric Kryski](http://gravatar.com/avatar/23aba778a7daae99348aeb0728cf4aec?s=200)
-
-## Eric Kryski
-
-* [<i class="fa fa-github"></i> ekryski](https://github.com/ekryski)
-* [<i class="fa fa-twitter"></i> @ekryski](http://twitter.com/ekryski)
-* [<i class="fa fa-home"></i> erickryski.com](http://erickryski.com)
-
--- sponsors
-
-# Our Sponsors
-
-![Assembly](img/sponsors/assembly_logo.png)
-
-![Village Brewery](img/sponsors/village_brewery_logo.png)
-
-![Startup Calgary](img/sponsors/startup_calgary_logo.png)
-
-![PetroFeed](img/sponsors/petrofeed_logo.png)
+* [<i class="fa fa-home"></i> Bitovi](http://bitovi.com)
 
 --
 
-# Last Month
-
-* Something awesome
-* More awesomeness
+<img src="img/calgary.jpg" style="width: 90%; margin: 0 auto; display: block;" alt="Calgary" />
 
 --
 
-# Next Month
+# [FeathersJS](http://feathersjs.com)
 
-* Something awesome
-* More awesomeness
+A NodeJS library based on Express for creating RESTful and websocket based APIs:
+
+  ```javascript
+  var feathers = require('feathers');
+
+  var todoService = {
+    get: function(id, params, callback) {
+      callback(null, {
+        id: id,
+        description: 'You have to do ' + id + '!'
+      });
+    }
+  };
+
+  feathers().configure(feathers.socketio())
+      .use('/todos', todoService)
+      .listen(8000);
+  ```
+
+--
+
+# Connecting to services
+
+REST
+
+```bash
+GET todos/dishes
+{
+  "id": "dishes",
+  "description": "You have to do dishes!"
+}
+```
+
+SocketIO
+
+```javascript
+<script src="http://localhost:8000/socket.io/socket.io.js" />
+<script type="text/javascript">
+  var socket = io.connect('http://localhost:8000/');
+
+  socket.emit('todos::get', 'laundry', {}, function(error, todo) {
+    todo.id // -> "laundry"
+    todo.description // "You have to do laundry!"
+  });
+</script>
+```
+
+--
+
+# A Feathers service
+
+Can be any JavaScript object that provides one or more of the following methods:
+
+```javascript
+var myService = {
+  find: function(params, callback) {},
+
+  get: function(id, params, callback) {},
+
+  create: function(data, params, callback) {},
+
+  update: function(id, data, params, callback) {},
+
+  patch: function(id, data, params, callback) {},
+
+  remove: function(id, params, callback) {},
+
+  setup: function(app) {}
+}
+```
+
+--
+
+# HTML 5 video
+
+```javascript
+var video = document.getElementsByTagName('video')[0];
+var connect = function (stream) {
+  video.src = window.URL ? window.URL.createObjectURL(stream) : stream;
+  video.play();
+};
+var error = function (e) {
+  alert(e.message);
+};
+
+navigator.getMedia = (navigator.getUserMedia ||
+  navigator.webkitGetUserMedia ||
+  navigator.mozGetUserMedia ||
+  navigator.msGetUserMedia);
+navigator.getMedia({ video: true }, connect, error);
+```
+
+--
+
+# Taking a picture
+
+```javascript
+var video = document.getElementsByTagName('video')[0];
+var canvas = document.createElement('canvas');
+var ctx = canvas.getContext('2d');
+
+canvas.width = options.width || video.videoWidth;
+canvas.height = options.height || video.videoHeight;
+ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+canvas.toDataURL() // Base 64 encoded image
+```

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-  <title>YYCjs Slides</title>
+  <title>Building InstaFace</title>
   <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,900,700,500' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="theme/font-awesome.css">
   <style type="text/css">
@@ -405,6 +405,7 @@ body {
   font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
   font-weight: 100;
   color: #333333;
+  background: #FFFFFF;
 }
 
 h1 {
@@ -425,6 +426,14 @@ h3 {
 
 p {
   font-weight: 100;
+}
+
+h1, h2, h3, h4, h5, p, ul {
+  margin: 10px 0;
+}
+
+ul {
+  padding: 20px 0 20px 60px;
 }
 
 .progress-bar {
@@ -471,6 +480,16 @@ p {
   padding: 30px;
 }
 
+.title .slide-content {
+  display: table;
+}
+
+.title h1 {
+  display: table-cell; 
+  vertical-align: middle;
+  z-index: 10;
+}
+
 .presenter img {
   height: 200px;
   width: 200px;
@@ -506,6 +525,10 @@ p {
   padding: 0 10px;
 }
 
+.sponsors h1 {
+  margin: 20px 0 40px 0;
+}
+
 .sponsors p {
   float: left;
   text-align: center;
@@ -517,6 +540,13 @@ p {
   width: 100%;
   max-width: 240px;
 }
+
+.image p > img {
+  max-width: 600px;
+  max-height: 400px;
+  margin: 20px auto;
+  display: table-cell;
+}
   </style>
 </head>
 <body>
@@ -525,59 +555,112 @@ p {
   </div>
 
   <div class="slide" id="slide-1">
-    <section class="slide-content"><h1 id="yyc-js-presents-">YYC.js Presents:</h1>
-<h2 id="an-epic-slide-template">An Epic Slide Template</h2>
-<h3 id="that-totally-kicks-some-ass">That totally kicks some ass</h3>
-<h4 id="kind-of-like-chuck-norris">Kind of like Chuck Norris</h4>
-<h5 id="and-jackie-chan">And Jackie Chan</h5>
-<p>Maybe even Chris Rock</p>
+    <section class="slide-content"><h1 id="instaface">InstaFace</h1>
+<h2 id="building-a-real-time-photo-sharing-application">Building a real-time photo sharing application</h2>
 </section>
   </div>
-  <div class="slide hidden" id="slide-2">
-    <section class="slide-content"><h1 id="brought-to-you-by">Brought to you by</h1>
-</section>
-  </div>
-  <div class="slide hidden  presenter" id="slide-3">
+  <div class="slide hidden  presenter" id="slide-2">
     <section class="slide-content"><p><img src="http://gravatar.com/avatar/a14850281f19396480bdba4aab2d52ef?s=200" alt="David Luecke"></p>
 <h2 id="david-luecke">David Luecke</h2>
 <ul>
 <li><a href="https://github.com/daffl"><i class="fa fa-github"></i> daffl</a></li>
 <li><a href="http://twitter.com/daffl"><i class="fa fa-twitter"></i> @daffl</a></li>
+<li><a href="http://bitovi.com"><i class="fa fa-home"></i> Bitovi</a></li>
 </ul>
 </section>
   </div>
-  <div class="slide hidden  presenter" id="slide-4">
-    <section class="slide-content"><p><img src="http://gravatar.com/avatar/23aba778a7daae99348aeb0728cf4aec?s=200" alt="Eric Kryski"></p>
-<h2 id="eric-kryski">Eric Kryski</h2>
-<ul>
-<li><a href="https://github.com/ekryski"><i class="fa fa-github"></i> ekryski</a></li>
-<li><a href="http://twitter.com/ekryski"><i class="fa fa-twitter"></i> @ekryski</a></li>
-<li><a href="http://erickryski.com"><i class="fa fa-home"></i> erickryski.com</a></li>
-</ul>
+  <div class="slide hidden" id="slide-3">
+    <section class="slide-content"><p><img src="img/calgary.jpg" style="width: 90%; margin: 0 auto; display: block;" alt="Calgary" /></p>
 </section>
   </div>
-  <div class="slide hidden  sponsors" id="slide-5">
-    <section class="slide-content"><h1 id="our-sponsors">Our Sponsors</h1>
-<p><img src="img/sponsors/assembly_logo.png" alt="Assembly"></p>
-<p><img src="img/sponsors/village_brewery_logo.png" alt="Village Brewery"></p>
-<p><img src="img/sponsors/startup_calgary_logo.png" alt="Startup Calgary"></p>
-<p><img src="img/sponsors/petrofeed_logo.png" alt="PetroFeed"></p>
+  <div class="slide hidden" id="slide-4">
+    <section class="slide-content"><h1 id="-feathersjs-http-feathersjs-com-"><a href="http://feathersjs.com">FeathersJS</a></h1>
+<p>A NodeJS library based on Express for creating RESTful and websocket based APIs:</p>
+<pre><code class="lang-javascript">  <span class="keyword">var</span> feathers = require(<span class="string">'feathers'</span>);
+
+  <span class="keyword">var</span> todoService = {
+    get: <span class="keyword">function</span>(id, params, callback) {
+      callback(<span class="literal">null</span>, {
+        id: id,
+        description: <span class="string">'You have to do '</span> + id + <span class="string">'!'</span>
+      });
+    }
+  };
+
+  feathers().configure(feathers.socketio())
+      .use(<span class="string">'/todos'</span>, todoService)
+      .listen(<span class="number">8000</span>);</code></pre>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-5">
+    <section class="slide-content"><h1 id="connecting-to-services">Connecting to services</h1>
+<p>REST</p>
+<pre><code class="lang-bash">GET todos/dishes
+{
+  <span class="string">"id"</span>: <span class="string">"dishes"</span>,
+  <span class="string">"description"</span>: <span class="string">"You have to do dishes!"</span>
+}</code></pre>
+<p>SocketIO</p>
+<pre><code class="lang-javascript">&lt;script src=<span class="string">"http://localhost:8000/socket.io/socket.io.js"</span> /&gt;
+<span class="xml"><span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span>&gt;</span><span class="javascript">
+  <span class="keyword">var</span> socket = io.connect(<span class="string">'http://localhost:8000/'</span>);
+
+  socket.emit(<span class="string">'todos::get'</span>, <span class="string">'laundry'</span>, {}, <span class="keyword">function</span>(error, todo) {
+    todo.id <span class="comment">// -&gt; "laundry"</span>
+    todo.description <span class="comment">// "You have to do laundry!"</span>
+  });
+</span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span></code></pre>
 </section>
   </div>
   <div class="slide hidden" id="slide-6">
-    <section class="slide-content"><h1 id="last-month">Last Month</h1>
-<ul>
-<li>Something awesome</li>
-<li>More awesomeness</li>
-</ul>
+    <section class="slide-content"><h1 id="a-feathers-service">A Feathers service</h1>
+<p>Can be any JavaScript object that provides one or more of the following methods:</p>
+<pre><code class="lang-javascript"><span class="keyword">var</span> myService = {
+  find: <span class="keyword">function</span>(params, callback) {},
+
+  get: <span class="keyword">function</span>(id, params, callback) {},
+
+  create: <span class="keyword">function</span>(data, params, callback) {},
+
+  update: <span class="keyword">function</span>(id, data, params, callback) {},
+
+  patch: <span class="keyword">function</span>(id, data, params, callback) {},
+
+  remove: <span class="keyword">function</span>(id, params, callback) {},
+
+  setup: <span class="keyword">function</span>(app) {}
+}</code></pre>
 </section>
   </div>
   <div class="slide hidden" id="slide-7">
-    <section class="slide-content"><h1 id="next-month">Next Month</h1>
-<ul>
-<li>Something awesome</li>
-<li>More awesomeness</li>
-</ul>
+    <section class="slide-content"><h1 id="html-5-video">HTML 5 video</h1>
+<pre><code class="lang-javascript"><span class="keyword">var</span> video = document.getElementsByTagName(<span class="string">'video'</span>)[<span class="number">0</span>];
+<span class="keyword">var</span> connect = <span class="function"><span class="keyword">function</span> <span class="params">(stream)</span> {</span>
+  video.src = window.URL ? window.URL.createObjectURL(stream) : stream;
+  video.play();
+};
+<span class="keyword">var</span> error = <span class="function"><span class="keyword">function</span> <span class="params">(e)</span> {</span>
+  alert(e.message);
+};
+
+navigator.getMedia = (navigator.getUserMedia ||
+  navigator.webkitGetUserMedia ||
+  navigator.mozGetUserMedia ||
+  navigator.msGetUserMedia);
+navigator.getMedia({ video: <span class="literal">true</span> }, connect, error);</code></pre>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-8">
+    <section class="slide-content"><h1 id="taking-a-picture">Taking a picture</h1>
+<pre><code class="lang-javascript"><span class="keyword">var</span> video = document.getElementsByTagName(<span class="string">'video'</span>)[<span class="number">0</span>];
+<span class="keyword">var</span> canvas = document.createElement(<span class="string">'canvas'</span>);
+<span class="keyword">var</span> ctx = canvas.getContext(<span class="string">'2d'</span>);
+
+canvas.width = options.width || video.videoWidth;
+canvas.height = options.height || video.videoHeight;
+ctx.drawImage(video, <span class="number">0</span>, <span class="number">0</span>, canvas.width, canvas.height);
+
+canvas.toDataURL() <span class="comment">// Base 64 encoded image</span></code></pre>
 </section>
   </div>
 
