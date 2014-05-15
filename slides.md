@@ -8,6 +8,9 @@ logo: theme/logo.png
 
 # InstaFace
 
+<blockquote class="twitter-tweet" lang="en"><p>“You mean I can type, and it updates that text…IN REALTIME??” - every JavaScript framework demo.</p>&mdash; I Am Devloper (@iamdevloper) <a href="https://twitter.com/iamdevloper/statuses/464154382884700160">May 7, 2014</a></blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
 ## Building a real-time photo sharing application
 
 -- presenter
@@ -135,3 +138,4 @@ ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
 
 canvas.toDataURL() // Base 64 encoded image
 ```
+
