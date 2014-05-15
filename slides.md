@@ -4,17 +4,6 @@ theme: theme
 controls: false
 logo: theme/logo.png
 
---
-
-# InstaFace
-
-## Building a real-time photo sharing application
-
----
-
-<blockquote class="twitter-tweet" lang="en"><p>“You mean I can type, and it updates that text…IN REALTIME??” - every JavaScript framework demo.</p>&mdash; I Am Devloper (@iamdevloper) <a href="https://twitter.com/iamdevloper/statuses/464154382884700160">May 7, 2014</a></blockquote>
-<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-
 -- presenter
 
 ![David Luecke](http://gravatar.com/avatar/a14850281f19396480bdba4aab2d52ef?s=200)
@@ -28,6 +17,17 @@ logo: theme/logo.png
 --
 
 <img src="img/calgary.jpg" style="width: 90%; margin: 0 auto; display: block;" alt="Calgary" />
+
+--
+
+# InstaFace
+
+## Building a real-time photo sharing application
+
+--
+
+<blockquote class="twitter-tweet" lang="en"><p>“You mean I can type, and it updates that text…IN REALTIME??” - every JavaScript framework demo.</p>&mdash; I Am Devloper (@iamdevloper) <a href="https://twitter.com/iamdevloper/statuses/464154382884700160">May 7, 2014</a></blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 --
 
