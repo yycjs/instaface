@@ -1,6 +1,8 @@
 // http://coderthoughts.blogspot.co.uk/2013/03/html5-video-fun.html - thanks :)
 // view-source:http://demo.creative-jar.com/html5-camera/
 $(document).ready(function () {
+  $('video').video();
+
   $('form.login').on('submit', function (ev) {
     ev.preventDefault();
   });

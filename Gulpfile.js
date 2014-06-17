@@ -28,7 +28,7 @@ gulp.task('scripts', function() {
 
 // Rerun the task when a file changes
 gulp.task('watch', function() {
-  gulp.watch(paths.scripts, ['scripts']);
+  // gulp.watch(paths.scripts, ['scripts']);
   gulp.watch(paths.styles, ['less']);
 });
 
