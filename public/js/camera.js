@@ -1,4 +1,6 @@
 (function ($) {
+  // http://coderthoughts.blogspot.co.uk/2013/03/html5-video-fun.html - thanks :)
+  // view-source:http://demo.creative-jar.com/html5-camera/
   $.fn.video = function () {
     this.each(function () {
       var video = this;
@@ -20,6 +22,8 @@
         $(video).data('video-initialized', true);
       }
     });
+
+    return this;
   };
 
   $.fn.snapshot = function (options) {
@@ -34,7 +38,11 @@
 
       if (options.success) {
         options.success(canvas.toDataURL());
+      } else if(options) {
+        options(canvas.toDataURL());
       }
     });
+
+    return this;
   }
 })(jQuery);
