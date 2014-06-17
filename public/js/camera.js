@@ -1,6 +1,4 @@
 (function ($) {
-  // http://coderthoughts.blogspot.co.uk/2013/03/html5-video-fun.html - thanks :)
-  // view-source:http://demo.creative-jar.com/html5-camera/
   $.fn.video = function () {
     this.each(function () {
       var video = this;
@@ -22,7 +20,6 @@
         $(video).data('video-initialized', true);
       }
     });
-
     return this;
   };
 
@@ -36,13 +33,12 @@
       canvas.height = options.height || video.videoHeight;
       ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
 
-      if (options.success) {
-        options.success(canvas.toDataURL());
-      } else if(options) {
+      if(typeof options === 'function') {
         options(canvas.toDataURL());
+      } else if (options.success) {
+        options.success(canvas.toDataURL('image/jpeg', 0.6));
       }
     });
-
     return this;
   }
 })(jQuery);
