@@ -20,6 +20,7 @@
         $(video).data('video-initialized', true);
       }
     });
+    return this;
   };
 
   $.fn.snapshot = function (options) {
@@ -32,9 +33,12 @@
       canvas.height = options.height || video.videoHeight;
       ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
 
-      if (options.success) {
-        options.success(canvas.toDataURL());
+      if(typeof options === 'function') {
+        options(canvas.toDataURL());
+      } else if (options.success) {
+        options.success(canvas.toDataURL('image/jpeg', 0.6));
       }
     });
+    return this;
   }
 })(jQuery);
