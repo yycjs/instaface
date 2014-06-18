@@ -21,9 +21,25 @@ body {
   color: @grey;
 }
 
-.hidden {
-  visibility: hidden;
-  display: none;
+// .hidden {
+//   visibility: hidden;
+//   display: none;
+// }
+
+// Layout
+// ==========================
+.page-wrap {
+  min-height: 100%;
+  margin-bottom: -@footer-height;
+
+  &:after {
+    content: "";
+    display: block;
+  }
+}
+
+.message, .page-wrap:after {
+  height: @footer-height;
 }
 
 a, button {
@@ -38,6 +54,16 @@ a, button {
   }
 }
 
+input[type=text], input[type=password], input[type=email], input[type=search], input[type=tel], textarea {
+padding: 10px;
+-webkit-appearance: none;
+-moz-appearance: none;
+font-weight: normal;
+line-height: normal;
+background-color: #FFF;
+border: 1px solid #CCC;
+color: @grey;
+}
 
 .modal {
   position: fixed;
@@ -136,8 +162,45 @@ section.header {
   }
 }
 
-section.message {
-  height: 30%;
+// section.message {
+//   height: 30%;
+// }
+instaface-userlist {
+  // position: fixed;
+  // bottom: 0;
+  // left: 0;
+  // width: 100%;
+  height: 100%;
+  min-height: 100%;
+  background: darken(@white, 5%);
+  border-right: 1px solid darken(@white, 20%);
+
+  video {
+    width: 100%;
+    .rounded(5px);
+  }
+
+  input {
+    width: 100%;
+  }
+}
+
+instaface-message {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: darken(@white, 10%);
+  border-top: 1px solid darken(@white, 20%);
+
+  video {
+    width: 100%;
+    .rounded(5px);
+  }
+
+  input {
+    width: 100%;
+  }
 }
 
 section.photos {
@@ -155,7 +218,7 @@ section.photos {
 
   .row {
     padding: 0px;
-    height: 100%;
+    // height: 100%;
   }
 
   .timeline {
@@ -170,14 +233,5 @@ section.photos {
     display: block;
     .drop-shadow(0, 2px, 3px, 0.4);
     background: solid darken(@white, 5%);
-  }
-}
-
-instaface-message {
-  display: block;
-  height: 100%;
-
-  video {
-    height: 100%;
   }
 }
