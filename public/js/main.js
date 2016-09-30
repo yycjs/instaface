@@ -7,9 +7,7 @@ $(document).ready(function () {
   $('form.login').on('submit', function (ev) {
     username = $('#username').val();
 
-    socket = io.connect('http://localhost:1337', {
-      query: $.param({ username: username })
-    });
+    socket = io.connect('http://localhost:1337');
 
     socket.on('images created', function (image) {
       var alt = image.user + ' ' + new Date(image.time).toLocaleDateString();
